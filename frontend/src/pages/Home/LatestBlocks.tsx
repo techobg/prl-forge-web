@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { useBlocks } from "../../hooks/useBlocks";
+import type { Block } from "../../types/block";
 
 export default function LatestBlocks() {
   const { data: blocks, isLoading } = useBlocks();
@@ -22,9 +24,12 @@ export default function LatestBlocks() {
           Latest Blocks
         </h2>
 
-        <button className="text-indigo-400 transition hover:text-indigo-300">
+        <Link
+          to="/explorer"
+          className="text-indigo-400 transition hover:text-indigo-300"
+        >
           View all →
-        </button>
+        </Link>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
@@ -40,12 +45,19 @@ export default function LatestBlocks() {
           </thead>
 
           <tbody>
-            {blocks.map((block: any) => (
+            {blocks.map((block: Block) => (
               <tr
                 key={block.height}
                 className="border-b border-white/5 transition hover:bg-white/5"
               >
-                <td className="p-5">{block.height}</td>
+                <td className="p-5">
+                  <Link
+                    to={`/blocks/${block.height}`}
+                    className="font-semibold text-indigo-400 transition hover:text-indigo-300"
+                  >
+                    {block.height}
+                  </Link>
+                </td>
 
                 <td className="p-5">{block.reward}</td>
 

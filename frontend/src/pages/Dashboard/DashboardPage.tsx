@@ -2,6 +2,7 @@ import PoolStatus from "../../components/dashboard/PoolStatus";
 import NetworkStatus from "../../components/dashboard/NetworkStatus";
 import StatsOverview from "../../components/dashboard/StatsOverview";
 import RecentBlocks from "../../components/dashboard/RecentBlocks";
+import PoolActivity from "../../components/dashboard/PoolActivity";
 
 export default function DashboardPage() {
   return (
@@ -31,8 +32,9 @@ export default function DashboardPage() {
         <StatsOverview />
       </section>
 
-      <section className="mx-auto mb-12 max-w-7xl px-6">
+      <section className="mx-auto mb-8 grid max-w-7xl gap-8 px-6 xl:grid-cols-2">
         <RecentBlocks />
+        <PoolActivity />
       </section>
 
     </main>
