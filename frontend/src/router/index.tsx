@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import WalletPage from "../pages/Wallet/WalletPage";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
+      {
+        path: "wallet/:address",
+        element: <WalletPage />,
+      },
       {
         index: true,
         element: <HomePage />,
