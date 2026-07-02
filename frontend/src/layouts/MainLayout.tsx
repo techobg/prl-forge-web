@@ -46,7 +46,7 @@ export default function MainLayout() {
 
         <NavLink
   to="/"
-  className="text-xl font-bold text-indigo-400 transition duration-300 hover:scale-105 hover:text-indigo-300"
+  className="text-3xl font-black text-indigo-400 transition duration-300 hover:scale-105 hover:text-indigo-300"
 >
   PRL Forge
 </NavLink>
@@ -76,7 +76,7 @@ export default function MainLayout() {
   {mobileOpen ? <X size={28} /> : <Menu size={28} />}
 </button>
 
-          <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-3 md:flex">
 <ThemeToggle />
   <div
     className={`h-2 w-2 rounded-full ${
