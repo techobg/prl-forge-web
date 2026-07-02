@@ -1,5 +1,6 @@
 import { useStats } from "../../hooks/useStats";
 import StatCard from "../ui/StatCard";
+import { formatHashrate } from "../../utils/hashrate";
 
 export default function StatsOverview() {
   const { data, isLoading } = useStats();
@@ -18,9 +19,9 @@ export default function StatsOverview() {
     <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
       <StatCard
-        title="Pool Hashrate"
-        value={data.poolHashrate}
-      />
+  title="Pool Hashrate"
+  value={formatHashrate(Number(data.poolHashrate))}
+/>
 
       <StatCard
         title="Active Miners"

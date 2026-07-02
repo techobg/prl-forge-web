@@ -17,9 +17,23 @@ func main() {
 
 	http.HandleFunc("/api/stats", handlers.StatsHandler)
 
+	http.HandleFunc("/api/status", handlers.StatusHandler)
+
+	http.HandleFunc("/api/wallet", handlers.WalletHandler)
+
+	http.HandleFunc("/api/workers", handlers.WorkersHandler)
+
+	http.HandleFunc("/api/miners", handlers.MinersHandler)
+
+	http.HandleFunc("/api/payments", handlers.PaymentsHandler)
+
+	http.HandleFunc("/api/blocks", handlers.BlocksHandler)
+
+	http.HandleFunc("/api/block", handlers.BlockDetailsHandler)
+
 	handler := middleware.CORS(http.DefaultServeMux)
 
-	log.Println("🚀 PRL Forge API running on :8080")
+	log.Println("🚀 PRL Forge API running on :8081")
 
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	log.Fatal(http.ListenAndServe(":8081", handler))
 }
