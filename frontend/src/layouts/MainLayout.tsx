@@ -16,6 +16,7 @@ const links = [
 
 export default function MainLayout() {
   const { data: status } = useStatus();
+  console.log("STATUS:", status);
   const [mobileOpen, setMobileOpen] = useState(false);
    return (
     <div
