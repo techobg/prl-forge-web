@@ -2,13 +2,14 @@ import { useStats } from "../../hooks/useStats";
 import StatCard from "../ui/StatCard";
 import { formatHashrate } from "../../utils/hashrate";
 
-export default function StatsOverview() {
+export default function statsOverview() {
   const { data, isLoading } = useStats();
 
   if (isLoading) {
     return (
       <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         <div className="text-xl">Loading...</div>
+        
       </section>
     );
   }

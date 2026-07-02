@@ -1,7 +1,7 @@
 import Card from "../ui/Card";
 import { useStats } from "../../hooks/useStats";
 
-export default function NetworkStatus() {
+export default function networkStatus() {
   const { data } = useStats();
 
   if (!data) return null;

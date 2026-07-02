@@ -1,6 +1,5 @@
 import DashboardHeader from "../../components/dashboard/dashboardHeader";
 import QuickActions from "../../components/dashboard/quickActions";
-
 import PoolStatus from "../../components/dashboard/poolStatus";
 import NetworkStatus from "../../components/dashboard/networkStatus";
 import StatsOverview from "../../components/dashboard/statsOverview";
@@ -8,6 +7,8 @@ import RecentBlocks from "../../components/dashboard/recentBlocks";
 import PoolActivity from "../../components/dashboard/poolActivity";
 
 export default function DashboardPage() {
+
+
   return (
     <main className="min-h-screen bg-[#050816] pt-24">
 
