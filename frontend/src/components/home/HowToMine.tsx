@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
 import ConfigGenerator from "../mining/ConfigGenerator";
 
 

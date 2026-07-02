@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 type StatCardProps = {
-  icon: ReactNode;
+  icon?: ReactNode;
   title: string;
   value: string;
   change?: string;
@@ -22,9 +22,11 @@ export default function StatCard({
 
         <div className="flex items-center gap-3">
 
-          <div className="rounded-xl bg-indigo-500/15 p-3 text-indigo-400 transition group-hover:scale-110">
-            {icon}
-          </div>
+          {icon && (
+  <div className="rounded-xl bg-indigo-500/15 p-3 text-indigo-400 transition group-hover:scale-110">
+    {icon}
+  </div>
+)}
 
           <p className="text-sm uppercase tracking-wider text-gray-400">
             {title}
