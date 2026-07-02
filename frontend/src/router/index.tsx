@@ -5,7 +5,7 @@ import PaymentsPage from "../pages/Payments/PaymentsPage";
 import MainLayout from "../layouts/MainLayout";
 import WorkersPage from "../pages/Workers/WorkersPage";
 import HomePage from "../pages/Home/HomePage";
-import DashboardPage from "../pages/Dashboard/DashboardPage";
+import DashboardPage from "../pages/Dashboard/dashboardPage";
 import ExplorerPage from "../pages/Explorer/ExplorerPage";
 import BlocksPage from "../pages/Blocks/BlocksPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";

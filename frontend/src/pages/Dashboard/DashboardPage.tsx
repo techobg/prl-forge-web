@@ -1,11 +1,11 @@
-import DashboardHeader from "../../components/dashboard/DashboardHeader";
-import QuickActions from "../../components/dashboard/QuickActions";
+import DashboardHeader from "../../components/dashboard/dashboardHeader";
+import QuickActions from "../../components/dashboard/quickActions";
 
-import PoolStatus from "../../components/dashboard/PoolStatus";
-import NetworkStatus from "../../components/dashboard/NetworkStatus";
-import StatsOverview from "../../components/dashboard/StatsOverview";
-import RecentBlocks from "../../components/dashboard/RecentBlocks";
-import PoolActivity from "../../components/dashboard/PoolActivity";
+import PoolStatus from "../../components/dashboard/poolStatus";
+import NetworkStatus from "../../components/dashboard/networkStatus";
+import StatsOverview from "../../components/dashboard/statsOverview";
+import RecentBlocks from "../../components/dashboard/recentBlocks";
+import PoolActivity from "../../components/dashboard/poolActivity";
 
 export default function DashboardPage() {
   return (
