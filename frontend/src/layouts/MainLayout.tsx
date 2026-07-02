@@ -1,3 +1,6 @@
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+
 import { NavLink, Outlet } from "react-router-dom";
 import { useStatus } from "../hooks/useStatus";
 import ThemeToggle from "../components/ThemeToggle";
@@ -13,6 +16,7 @@ const links = [
 
 export default function MainLayout() {
   const { data: status } = useStatus();
+  const [mobileOpen, setMobileOpen] = useState(false);
    return (
     <div
   className="min-h-screen transition-colors duration-500"
@@ -47,7 +51,7 @@ export default function MainLayout() {
   PRL Forge
 </NavLink>
 
-          <nav className="flex items-center gap-6">
+          <nav className="hidden items-center gap-6 md:flex">
 
             {links.map((link) => (
               <NavLink
@@ -64,6 +68,13 @@ export default function MainLayout() {
             ))}
 
           </nav>
+
+          <button
+  onClick={() => setMobileOpen(!mobileOpen)}
+  className="md:hidden"
+>
+  {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+</button>
 
           <div className="flex items-center gap-3">
 <ThemeToggle />
