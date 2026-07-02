@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-
 import { NavLink } from "react-router-dom";
 
 const navItems = [
@@ -10,7 +9,9 @@ const navItems = [
   { label: "Blocks", to: "/blocks" },
 ];
 
-export default function Navbar(const [open, setOpen] = useState(false);) {
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
