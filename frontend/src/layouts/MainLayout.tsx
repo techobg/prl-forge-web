@@ -104,7 +104,26 @@ export default function MainLayout() {
 
         </div>
       </header>
-
+{mobileOpen && (
+  <nav
+    className="border-b md:hidden"
+    style={{
+      background: "var(--bg)",
+      borderColor: "var(--border)",
+    }}
+  >
+    {links.map((link) => (
+      <NavLink
+        key={link.to}
+        to={link.to}
+        onClick={() => setMobileOpen(false)}
+        className="block px-6 py-4 text-gray-300 transition hover:bg-white/5 hover:text-white"
+      >
+        {link.label}
+      </NavLink>
+    ))}
+  </nav>
+)}
       <Outlet />
 
       <footer className="mt-24 border-t border-white/10">
