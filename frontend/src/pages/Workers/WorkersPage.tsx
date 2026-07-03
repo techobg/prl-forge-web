@@ -24,9 +24,9 @@ export default function WorkersPage() {
       acc[wallet].workers += 1;
       acc[wallet].hashrate += Number(worker.hashrate || 0);
 
-      if (worker.status !== "Online") {
-        acc[wallet].status = worker.status;
-      }
+      if (worker.status) {
+    acc[wallet].status = worker.status;
+}
 
       return acc;
     }, {})
@@ -76,12 +76,15 @@ export default function WorkersPage() {
                   <td className="p-5">
                     <span
                       className={`rounded-full px-3 py-1 ${
-                        miner.status === "Online"
-                          ? "bg-green-500/20 text-green-400"
-                          : "bg-red-500/20 text-red-400"
-                      }`}
+  miner.status === "Online" ||
+  miner.status === "ONLINE_FROM_FORGE"
+    ? "bg-green-500/20 text-green-400"
+    : "bg-red-500/20 text-red-400"
+}`}
                     >
-                      {miner.status}
+                      {miner.status === "ONLINE_FROM_FORGE"
+  ? "Online"
+  : miner.status}
                     </span>
                   </td>
                 </tr>

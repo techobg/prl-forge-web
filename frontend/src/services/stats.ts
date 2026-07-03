@@ -12,6 +12,16 @@ export type StatsResponse = {
 };
 
 export async function getStats(): Promise<StatsResponse> {
-  const { data } = await api.get("/stats");
-  return data;
+  const { data } = await api.get("/v1/dashboard");
+
+  return {
+    poolHashrate: data.network.hashrate.toString(),
+    miners: data.workers.online,
+    workers: data.workers.online,
+    networkHeight: data.network.height,
+    difficulty: data.network.difficulty.toString(),
+    poolLuck: 0,
+    poolFee: 0.5,
+    price: 0,
+  };
 }

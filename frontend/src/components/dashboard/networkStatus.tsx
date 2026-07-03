@@ -1,8 +1,10 @@
 import Card from "../ui/Card";
-import { useStats } from "../../hooks/useStats";
+import { useDashboard } from "../../hooks/useDashboard";
+import { usePearlPrice } from "../../hooks/usePearlPrice";
 
 export default function networkStatus() {
-  const { data } = useStats();
+  const { data } = useDashboard();
+  const { data: price } = usePearlPrice();
 
   if (!data) return null;
 
@@ -20,27 +22,33 @@ export default function networkStatus() {
           </p>
 
           <p className="mt-2 text-3xl font-bold">
-            {data.networkHeight}
+            {data?.network.height}
           </p>
         </div>
 
         <div>
-          <p className="text-sm text-gray-500">
-            Difficulty
-          </p>
+  <p className="text-sm text-gray-500">
+    Node Status
+  </p>
 
-          <p className="mt-2 text-3xl font-bold">
-            {data.difficulty}
-          </p>
-        </div>
-
+  <p
+    className={`mt-2 text-3xl font-bold ${
+      data.pool.status === "online"
+        ? "text-green-400"
+        : "text-red-400"
+    }`}
+  >
+    {data.pool.status}
+  </p>
+</div>
         <div>
           <p className="text-sm text-gray-500">
             PRL Price
           </p>
 
           <p className="mt-2 text-3xl font-bold text-green-400">
-            ${data.price}
+            $
+{price?.market_data.current_price.usd?.toFixed(4)}
           </p>
         </div>
 

@@ -4,34 +4,27 @@ import PoolStatus from "../../components/dashboard/poolStatus";
 import NetworkStatus from "../../components/dashboard/networkStatus";
 import StatsOverview from "../../components/dashboard/statsOverview";
 import RecentBlocks from "../../components/dashboard/recentBlocks";
-import PoolActivity from "../../components/dashboard/poolActivity";
 
 export default function DashboardPage() {
-
-
   return (
     <main className="min-h-screen bg-[#050816] pt-24">
 
       <DashboardHeader />
 
-      <QuickActions />
-
-      <section className="mx-auto mb-8 max-w-7xl px-6">
-        <PoolStatus />
-      </section>
-
-      <section className="mx-auto mb-8 max-w-7xl px-6">
-        <NetworkStatus />
-      </section>
-
       <section className="mx-auto mb-8 max-w-7xl px-6">
         <StatsOverview />
       </section>
 
-      <section className="mx-auto mb-8 grid max-w-7xl gap-8 px-6 xl:grid-cols-2">
-        <RecentBlocks />
-        <PoolActivity />
+      <section className="mx-auto mb-8 grid max-w-7xl gap-8 px-6 lg:grid-cols-2">
+        <PoolStatus />
+        <NetworkStatus />
       </section>
+
+      <section className="mx-auto mb-8 max-w-7xl px-6">
+        <RecentBlocks />
+      </section>
+
+      <QuickActions />
 
     </main>
   );

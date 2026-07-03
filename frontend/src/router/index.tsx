@@ -11,6 +11,7 @@ import BlocksPage from "../pages/Blocks/BlocksPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
 import AnalyticsPage from "../pages/Analytics/AnalyticsPage";
 import AyaPage from "../pages/Aya/AyaPages";
+import StartMiningPage from "../pages/startMining/StartMiningPage";
 
 
 
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
   path: "workers",
   element: <WorkersPage />,
+},
+{
+  path: "start-mining",
+  element: <StartMiningPage />,
 },
 {
   path: "miners/:wallet",

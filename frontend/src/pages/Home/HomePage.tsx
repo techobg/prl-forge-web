@@ -1,34 +1,29 @@
 import Hero from "./Hero";
-import StatsGrid from "./StatsGrid";
-import LatestBlocks from "./LatestBlocks";
-import LatestPayments from "./LatestPayments";
-import TopMiners from "./TopMiners";
-import NetworkOverview from "./NetworkOverview";
-import Features from "../../components/home/Features";
-import HowToMine from "../../components/home/HowToMine";
-import LiveNetwork from "../../components/home/LiveNetwork";
-
+import PearlNetwork from "./PearlNetwork";
+import BlockReward from "./BlockReward";
+import PoolOverview from "./PoolOverview";
+import LatestBlock from "./LatestBlock";
+import LatestPayment from "./LatestPayment";
+import PoolActivity from "./PoolActivity";
 
 export default function HomePage() {
   return (
     <>
-  <Hero />
+      <Hero />
 
-  <LiveNetwork />
+      <section className="mx-auto mt-8 grid max-w-7xl gap-5 px-6 md:grid-cols-2 xl:grid-cols-3">
+        <PearlNetwork />
 
-  <HowToMine />
+        <BlockReward />
 
-  <Features />
+        <PoolOverview />
 
-  <StatsGrid />
+        <LatestBlock />
 
-  <NetworkOverview />
+        <LatestPayment />
 
-  <LatestBlocks />
-
-  <LatestPayments />
-
-  <TopMiners />
-</>
+        <PoolActivity />
+      </section>
+    </>
   );
 }

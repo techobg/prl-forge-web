@@ -4,25 +4,10 @@ import Card from "../ui/Card";
 export default function RecentBlocks() {
   const { data: blocks, isLoading } = useBlocks();
 
-  if (isLoading) {
-    return (
-      <Card className="p-6">
-        <h2 className="text-2xl font-bold">
-          Recent Blocks
-        </h2>
-
-        <p className="mt-4 text-gray-400">
-          Loading...
-        </p>
-      </Card>
-    );
-  }
-
-  if (!blocks) return null;
+  const blockList = blocks ?? [];
 
   return (
     <Card className="overflow-hidden">
-
       <div className="border-b border-white/10 p-6">
         <h2 className="text-2xl font-bold">
           Recent Blocks
@@ -30,11 +15,8 @@ export default function RecentBlocks() {
       </div>
 
       <table className="w-full">
-
         <thead className="border-b border-white/10">
-
           <tr>
-
             <th className="p-5 text-left">
               Height
             </th>
@@ -54,48 +36,58 @@ export default function RecentBlocks() {
             <th className="p-5 text-left">
               Confirms
             </th>
-
           </tr>
-
         </thead>
 
         <tbody>
-
-          {blocks.map((block: any) => (
-
-            <tr
-              key={block.height}
-              className="border-b border-white/5 hover:bg-white/5 transition"
-            >
-
-              <td className="p-5">
-                {block.height}
+          {isLoading ? (
+            <tr>
+              <td
+                colSpan={5}
+                className="p-8 text-center text-gray-400"
+              >
+                Loading...
               </td>
-
-              <td className="p-5">
-                {block.miner}
-              </td>
-
-              <td className="p-5">
-                {block.reward}
-              </td>
-
-              <td className="p-5">
-                {block.time}
-              </td>
-
-              <td className="p-5">
-                {block.confirmations}
-              </td>
-
             </tr>
+          ) : blockList.length === 0 ? (
+            <tr>
+              <td
+                colSpan={5}
+                className="p-8 text-center text-gray-400"
+              >
+                No blocks found yet
+              </td>
+            </tr>
+          ) : (
+            blockList.map((block: any) => (
+              <tr
+                key={block.height}
+                className="border-b border-white/5 hover:bg-white/5 transition"
+              >
+                <td className="p-5">
+                  {block.height}
+                </td>
 
-          ))}
+                <td className="p-5">
+                  {block.miner}
+                </td>
 
+                <td className="p-5">
+                  {block.reward}
+                </td>
+
+                <td className="p-5">
+                  {block.time}
+                </td>
+
+                <td className="p-5">
+                  {block.confirmations}
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
-
       </table>
-
     </Card>
   );
 }
