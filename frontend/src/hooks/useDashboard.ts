@@ -14,13 +14,18 @@ export interface DashboardResponse {
   network: {
     height: number;
     difficulty: number;
-    hashrate: number;
+    networkHashrate: number;
+    poolHashrate: number;
   };
 
-  template: {
-    height: number;
-    bits: string;
+  reward: {
+    baseReward: number;
+    txFees: number;
+    totalReward: number;
+    poolFee: number;
+    minerReward: number;
   };
+
 }
 
 async function fetchDashboard(): Promise<DashboardResponse> {

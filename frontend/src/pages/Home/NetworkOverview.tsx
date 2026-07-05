@@ -12,7 +12,15 @@ function formatHashrate(hs?: number) {
     return "--";
   }
 
-  const units = ["H/s", "KH/s", "MH/s", "GH/s", "TH/s", "PH/s"];
+  const units = [
+  "H/s",
+  "KH/s",
+  "MH/s",
+  "GH/s",
+  "TH/s",
+  "PH/s",
+  "EH/s",
+];
 
   let value = hs;
   let unit = 0;
