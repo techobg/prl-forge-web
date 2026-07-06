@@ -17,6 +17,11 @@ export interface DashboardResponse {
     networkHashrate: number;
     poolHashrate: number;
   };
+round: {
+  shares: number;
+  work: number;
+  luck: number;
+};
 
   reward: {
     baseReward: number;

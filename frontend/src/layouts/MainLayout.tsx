@@ -7,6 +7,7 @@ import { useStatus } from "../hooks/useStatus";
 const links = [
   { to: "/", label: "Home" },
   { to: "/dashboard", label: "Dashboard" },
+  { to: "/blocks", label: "Blocks" }, 
    { to: "/start-mining", label: "Start Mining" },
     { to: "/explorer", label: "Explorer" },
   { to: "/payments", label: "Payments" },
@@ -126,7 +127,12 @@ export default function MainLayout() {
             >
               Explorer
             </NavLink>
-
+<NavLink
+  to="/blocks"
+  className="text-gray-400 transition hover:text-white"
+>
+  Blocks
+</NavLink>
             <NavLink
               to="/payments"
               className="text-gray-400 transition hover:text-white"

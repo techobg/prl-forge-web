@@ -1,5 +1,5 @@
 import { useDashboard } from "../../hooks/useDashboard";
-import { formatHashrate } from "../../utils/hashrate";
+
 
 export default function LiveNetwork() {
 
@@ -52,7 +52,7 @@ if (isLoading || !data) {
 </p>
 
 <h3 className="mt-3 text-3xl font-bold text-indigo-400">
-  {formatHashrate(Number(data.network.hashrate))}
+ formatHashrate(Number(data.network.networkHashrate))
 </h3>
 </div>
 

@@ -1,53 +1,135 @@
-import { useParams } from "react-router-dom";
-import { useBlock } from "../../hooks/useBlock";
+import { useBlocks } from "../../hooks/useBlocks";
+
 
 export default function BlocksPage() {
-  const { height } = useParams();
-  const { data: block, isLoading } = useBlock(height);
-if (isLoading) {
-  return (
-    <main className="min-h-screen bg-[#050816] pt-24">
-      <section className="mx-auto max-w-7xl px-6">
-        <h1 className="text-3xl font-bold">Loading block...</h1>
-      </section>
-    </main>
-  );
-}
-
-if (!block) {
-  return (
-    <main className="min-h-screen bg-[#050816] pt-24">
-      <section className="mx-auto max-w-7xl px-6">
-        <h1 className="text-3xl font-bold">Block not found</h1>
-      </section>
-    </main>
-  );
-}
+  const { data: blocks = [], isLoading } = useBlocks();
   return (
     <main className="min-h-screen bg-[#050816] pt-24">
       <section className="mx-auto max-w-7xl px-6">
 
-        <h1 className="text-5xl font-bold">
-  Block #{block.height}
-</h1>
+        <div className="mb-10">
+          <h1 className="text-5xl font-bold text-white">
+            Blocks
+          </h1>
 
-<div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-8">
+          <p className="mt-2 text-gray-400">
+            History of all blocks found by PRL Forge.
+          </p>
+        </div>
 
-  <div className="space-y-4">
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
 
-    <p><strong>Hash:</strong> {block.hash}</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <p className="text-gray-400">Matured</p>
+            <p className="mt-2 text-4xl font-bold text-green-400">
+              0
+            </p>
+          </div>
 
-    <p><strong>Miner:</strong> {block.miner}</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <p className="text-gray-400">Immature</p>
+            <p className="mt-2 text-4xl font-bold text-yellow-400">
+              0
+            </p>
+          </div>
 
-    <p><strong>Reward:</strong> {block.reward}</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <p className="text-gray-400">New</p>
+            <p className="mt-2 text-4xl font-bold text-cyan-400">
+              0
+            </p>
+          </div>
 
-    <p><strong>Time:</strong> {block.time}</p>
+        </div>
 
-    <p><strong>Confirmations:</strong> {block.confirmations}</p>
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
 
-  </div>
+          <table className="w-full">
 
-</div>
+            <thead className="border-b border-white/10 bg-white/5">
+
+              <tr>
+
+                <th className="p-5 text-left">Height</th>
+                <th className="p-5 text-left">Miner</th>
+                <th className="p-5 text-left">Time</th>
+                <th className="p-5 text-left">Luck</th>
+                <th className="p-5 text-left">Reward</th>
+                <th className="p-5 text-left">Status</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+  {isLoading ? (
+
+    <tr>
+      <td
+        colSpan={6}
+        className="p-12 text-center text-gray-500"
+      >
+        Loading...
+      </td>
+    </tr>
+
+  ) : blocks.length === 0 ? (
+
+    <tr>
+      <td
+        colSpan={6}
+        className="p-12 text-center text-gray-500"
+      >
+        No blocks found yet.
+      </td>
+    </tr>
+
+  ) : (
+
+  blocks.map((block: any) => (
+
+    <tr
+      key={block.height}
+      className="border-b border-white/5 hover:bg-white/5"
+    >
+      <td className="p-5 font-semibold">
+        {block.height}
+      </td>
+
+      <td className="p-5">
+        {block.finder}
+      </td>
+
+      <td className="p-5">
+        {new Date(block.timestamp).toLocaleString()}
+      </td>
+
+      <td className="p-5">
+        {block.luck ?? "--"} %
+      </td>
+
+      <td className="p-5">
+        {block.reward} PRL
+      </td>
+
+      <td className="p-5">
+        <span className="text-green-400">
+          Matured
+        </span>
+      </td>
+
+    </tr>
+
+  ))
+
+)}
+
+</tbody>
+
+          </table>
+
+        </div>
 
       </section>
     </main>

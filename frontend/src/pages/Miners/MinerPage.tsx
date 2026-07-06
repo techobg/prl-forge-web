@@ -90,7 +90,7 @@ export default function MinerPage() {
                   </td>
 
                   <td className="p-5">
-                    {worker.lastShare}
+                   {worker.lastSeen}
                   </td>
 
                   <td className="p-5">

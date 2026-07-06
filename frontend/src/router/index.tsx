@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/NotFound/NotFoundPage";
 import AnalyticsPage from "../pages/Analytics/AnalyticsPage";
 import AyaPage from "../pages/Aya/AyaPages";
 import StartMiningPage from "../pages/startMining/StartMiningPage";
+import BlockPage from "../pages/Blocks/BlockPage";
 
 
 
@@ -63,9 +64,13 @@ export const router = createBrowserRouter([
         element: <ExplorerPage />,
       },
       {
-        path: "blocks/:height",
-        element: <BlocksPage />,
-      },
+    path: "blocks",
+    element: <BlocksPage />,
+},
+{
+    path: "blocks/:height",
+    element: <BlockPage />,
+},
       {
         path: "*",
         element: <NotFoundPage />,

@@ -1,6 +1,6 @@
-import axios from "axios";
+import api from "./api";
 
 export async function getWorkers() {
-  const { data } = await axios.get("http://localhost:8080/api/workers");
+  const { data } = await api.get("/v1/workers");
   return data;
 }
