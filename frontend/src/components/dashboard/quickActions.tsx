@@ -3,7 +3,7 @@ import {
   Search,
   Wallet,
   Cpu,
-  BarChart3,
+
 } from "lucide-react";
 
 const actions = [
