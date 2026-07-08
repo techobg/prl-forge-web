@@ -1,29 +1,46 @@
 package services
 
-import "github.com/techobg/prl-forge-web/backend/internal/models"
+import (
+	"encoding/json"
+	"net/http"
+
+	"github.com/techobg/prl-forge-web/backend/internal/models"
+)
 
 func GetWorkers() []models.Worker {
-	return []models.Worker{
-		{
-			Name:      "Rig-01",
-			Hashrate:  "425 MH/s",
-			Shares:    842,
-			LastShare: "12 sec ago",
-			Status:    "Online",
-		},
-		{
-			Name:      "Rig-02",
-			Hashrate:  "398 MH/s",
-			Shares:    731,
-			LastShare: "35 sec ago",
-			Status:    "Online",
-		},
-		{
-			Name:      "Rig-03",
-			Hashrate:  "0 H/s",
-			Shares:    0,
-			LastShare: "15 min ago",
-			Status:    "Offline",
-		},
+
+	resp, err := http.Get("http://localhost:8080/api/v1/workers")
+	if err != nil {
+		return []models.Worker{}
 	}
+	defer resp.Body.Close()
+
+	type forgeWorker struct {
+		Name      string  `json:"name"`
+		Hashrate  float64 `json:"hashrate"`
+		Shares    uint64  `json:"shares"`
+		LastShare string  `json:"lastShare"`
+		Status    string  `json:"status"`
+	}
+
+	var workers []forgeWorker
+
+	if err := json.NewDecoder(resp.Body).Decode(&workers); err != nil {
+		return []models.Worker{}
+	}
+
+	result := make([]models.Worker, 0, len(workers))
+
+	for _, w := range workers {
+
+		result = append(result, models.Worker{
+			Name:      w.Name,
+			Hashrate:  formatHashrate(w.Hashrate),
+			Shares:    int(w.Shares),
+			LastShare: w.LastShare,
+			Status:    w.Status,
+		})
+	}
+
+	return result
 }

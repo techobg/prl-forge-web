@@ -1,12 +1,14 @@
 package services
 
 import (
-
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
+
 	"github.com/techobg/prl-forge-web/backend/internal/models"
 )
+
 func GetStats() models.Stats {
 
 	type DashboardResponse struct {
@@ -23,6 +25,10 @@ func GetStats() models.Stats {
 			Difficulty float64 `json:"difficulty"`
 			Hashrate   float64 `json:"hashrate"`
 		} `json:"network"`
+
+		Round struct {
+			Luck float64 `json:"luck"`
+		} `json:"round"`
 	}
 
 	resp, err := http.Get("http://localhost:8080/api/v1/dashboard")
@@ -31,20 +37,30 @@ func GetStats() models.Stats {
 	}
 	defer resp.Body.Close()
 
-	var dashboard DashboardResponse
-
-	if err := json.NewDecoder(resp.Body).Decode(&dashboard); err != nil {
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
 		return models.Stats{}
 	}
 
+	fmt.Println("RAW JSON:")
+	fmt.Println(string(body))
+
+	var dashboard DashboardResponse
+	if err := json.Unmarshal(body, &dashboard); err != nil {
+		fmt.Println("UNMARSHAL ERROR:", err)
+		return models.Stats{}
+	}
+
+	fmt.Printf("ROUND: %+v\n", dashboard.Round)
+
 	return models.Stats{
-		PoolHashrate: formatHashrate(dashboard.Network.Hashrate),
+		PoolHashrate:  formatHashrate(dashboard.Network.Hashrate),
 		Miners:        dashboard.Workers.Online,
 		Workers:       dashboard.Workers.Online,
 		NetworkHeight: int(dashboard.Network.Height),
 		Difficulty:    fmt.Sprintf("%.2f", dashboard.Network.Difficulty),
-		PoolLuck:      0,
-		PoolFee:       0.5,
+		PoolLuck:      dashboard.Round.Luck,
+		PoolFee:       1.5,
 		Price:         0,
 	}
 }

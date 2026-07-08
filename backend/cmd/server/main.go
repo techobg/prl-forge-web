@@ -25,6 +25,8 @@ func main() {
 
 	http.HandleFunc("/api/miners", handlers.MinersHandler)
 
+	http.HandleFunc("/api/miner", handlers.MinerHandler)
+
 	http.HandleFunc("/api/payments", handlers.PaymentsHandler)
 
 	http.HandleFunc("/api/blocks", handlers.BlocksHandler)

@@ -40,14 +40,14 @@ export default function statsOverview() {
       />
 
       <StatCard
-        title="Difficulty"
-        value={data.difficulty}
-      />
+  title="Difficulty"
+  value={`${(Number(data.difficulty) / 1_000_000).toFixed(2)}M`}
+/>
 
       <StatCard
-        title="Pool Luck"
-        value={`${data.poolLuck}%`}
-      />
+  title="Pool Luck"
+  value={`${data.poolLuck.toFixed(2)}%`}
+/>
 
     </section>
   );

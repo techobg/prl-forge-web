@@ -1,4 +1,5 @@
 import Card from "../ui/Card";
+import { useStats } from "../../hooks/useStats";
 
 const activity = [
   {
@@ -19,6 +20,7 @@ const activity = [
 ];
 
 export default function PoolActivity() {
+  const { data, isLoading } = useStats();
   return (
     <Card className="p-6">
       <h2 className="mb-6 text-2xl font-bold">

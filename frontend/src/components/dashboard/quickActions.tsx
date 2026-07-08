@@ -25,12 +25,7 @@ const actions = [
     icon: Cpu,
     to: "/workers",
   },
-  {
-    title: "Statistics",
-    description: "Pool overview",
-    icon: BarChart3,
-    to: "/dashboard",
-  },
+  
 ];
 
 export default function QuickActions() {
@@ -39,7 +34,7 @@ export default function QuickActions() {
   return (
     <section className="mx-auto mb-8 max-w-7xl px-6">
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-3">
 
         {actions.map((action) => {
           const Icon = action.icon;

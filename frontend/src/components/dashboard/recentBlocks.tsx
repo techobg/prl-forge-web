@@ -51,13 +51,27 @@ export default function RecentBlocks() {
             </tr>
           ) : blockList.length === 0 ? (
             <tr>
-              <td
-                colSpan={5}
-                className="p-8 text-center text-gray-400"
-              >
-                No blocks found yet
-              </td>
-            </tr>
+  <td
+    colSpan={5}
+    className="p-10 text-center"
+  >
+    <div className="flex flex-col items-center justify-center gap-3">
+
+      <div className="text-5xl">
+        ⛏️
+      </div>
+
+      <p className="text-lg font-semibold text-white">
+        No blocks found yet
+      </p>
+
+      <p className="max-w-md text-sm text-gray-400">
+        Be the first miner to find a Pearl block and make PRL Forge history.
+      </p>
+
+    </div>
+  </td>
+</tr>
           ) : (
             blockList.map((block: any) => (
               <tr

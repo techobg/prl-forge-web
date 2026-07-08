@@ -16,43 +16,37 @@ export default function networkStatus() {
 
       <div className="grid gap-6 md:grid-cols-3">
 
-        <div>
-          <p className="text-sm text-gray-500">
-            Network Height
-          </p>
+  <div>
+    <p className="text-sm text-gray-500">
+      Network Height
+    </p>
 
-          <p className="mt-2 text-3xl font-bold">
-            {data?.network.height}
-          </p>
-        </div>
+    <p className="mt-2 text-3xl font-bold">
+      {data.network.height}
+    </p>
+  </div>
 
-        <div>
-  <p className="text-sm text-gray-500">
-    Node Status
-  </p>
+  <div>
+    <p className="text-sm text-gray-500">
+      Difficulty
+    </p>
 
-  <p
-    className={`mt-2 text-3xl font-bold ${
-      data.pool.status === "online"
-        ? "text-green-400"
-        : "text-red-400"
-    }`}
-  >
-    {data.pool.status}
-  </p>
+    <p className="mt-2 text-3xl font-bold">
+      {(data.network.difficulty / 1_000_000).toFixed(2)}M
+    </p>
+  </div>
+
+  <div>
+    <p className="text-sm text-gray-500">
+      PRL Price
+    </p>
+
+    <p className="mt-2 text-3xl font-bold text-green-400">
+      ${price?.market_data.current_price.usd?.toFixed(4)}
+    </p>
+  </div>
+
 </div>
-        <div>
-          <p className="text-sm text-gray-500">
-            PRL Price
-          </p>
-
-          <p className="mt-2 text-3xl font-bold text-green-400">
-            $
-{price?.market_data.current_price.usd?.toFixed(4)}
-          </p>
-        </div>
-
-      </div>
     </Card>
   );
 }

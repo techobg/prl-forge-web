@@ -15,13 +15,13 @@ export async function getStats(): Promise<StatsResponse> {
   const { data } = await api.get("/v1/dashboard");
 
   return {
-    poolHashrate: data.network.hashrate.toString(),
+    poolHashrate: data.network.poolHashrate.toString(),
     miners: data.workers.online,
     workers: data.workers.online,
     networkHeight: data.network.height,
     difficulty: data.network.difficulty.toString(),
-    poolLuck: 0,
-    poolFee: 0.5,
+    poolLuck: data.round.luck,
+    poolFee: 1.5,
     price: 0,
   };
 }
