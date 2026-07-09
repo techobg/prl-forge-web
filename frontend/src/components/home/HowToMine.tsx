@@ -1,45 +1,50 @@
 import { useState } from "react";
 import ConfigGenerator from "../mining/ConfigGenerator";
+import HiveOSGuide from "../mining/HiveOSGuide";
+import WindowsGuide from "../mining/WindowsGuide";
+import VerifyMining from "../mining/VerifyMining";
+import FAQ from "../mining/FAQ";
 
 
 
 export default function HowToMine() {
-  const [copied, setCopied] = useState(false);
+  
 
-  const copyPoolAddress = async () => {
-    await navigator.clipboard.writeText(
-      "stratum+tcp://pool.prlforge.com:3333"
-    );
+  const [tab, setTab] = useState<
+  "hiveos" | "windows" | "config" | "verify" | "faq"
+>("hiveos");
 
-    setCopied(true);
-
-    setTimeout(() => setCopied(false), 2000);
-  };
+  
 
   return (
     <section
       id="how-to-mine"
-      className="mx-auto max-w-7xl px-6 py-24"
+      className="mx-auto max-w-7xl px-6 py-14"
     >
-      <div className="mb-12 text-center">
+      <div className="mb-8 text-center">
         <h2 className="text-4xl font-bold">
           How to Mine Pearl
         </h2>
 
-        <p className="mt-4 text-gray-400">
+        <p className="mt-4 flex-1 text-gray-400">
           Start mining with PRL Forge in just a few simple steps.
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+        <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+ 
+ <div className="mb-3 inline-flex rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-400">
+  Step 1
+</div>
+ 
   <div className="mb-4 text-4xl">👛</div>
 
   <h3 className="text-xl font-semibold">
-    Create Wallet
+  Create a Wallet
   </h3>
 
-  <p className="mt-3 text-sm text-gray-400">
+  <p className="mt-3 flex-1 text-sm text-gray-400">
     Download the official Pearl Wallet and create your wallet address.
     Your wallet will receive all block rewards mined through PRL Forge.
   </p>
@@ -48,24 +53,29 @@ export default function HowToMine() {
     href="https://github.com/pearl-research-labs/pearl/releases"
     target="_blank"
     rel="noopener noreferrer"
-    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
+    className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
   >
     Download Official Wallet ↗
   </a>
 
   <p className="mt-3 text-xs text-gray-500">
-    Windows • Linux • macOS
-  </p>
+  Windows • Linux • macOS
+</p>
 </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+        <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+  
+  <div className="mb-3 inline-flex rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-400">
+  Step 2
+</div>
+  
   <div className="mb-4 text-4xl">⬇️</div>
 
   <h3 className="text-xl font-semibold">
-    Download SRBMiner
-  </h3>
+  Install SRBMiner
+</h3>
 
-  <p className="mt-3 text-sm text-gray-400">
+  <p className="mt-3 flex-1 text-sm text-gray-400">
     Download the latest version of SRBMiner-MULTI, the recommended miner
     for Pearl. It offers the best compatibility and performance for PRL
     mining.
@@ -75,72 +85,70 @@ export default function HowToMine() {
     href="https://github.com/doktor83/SRBMiner-Multi/releases"
     target="_blank"
     rel="noopener noreferrer"
-    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
+   className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
   >
     Download SRBMiner ↗
   </a>
 
   <p className="mt-3 text-xs text-gray-500">
-    Windows • Linux
-  </p>
+  Windows • Linux
+</p>
 </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+        <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+ 
+ <div className="mb-3 inline-flex rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-400">
+  Step 3
+</div>
+ 
   <div className="mb-4 text-4xl">⚙️</div>
 
   <h3 className="text-xl font-semibold">
-    Generate Configuration
-  </h3>
+  Generate Miner Config
+</h3>
 
-  <p className="mt-3 text-sm text-gray-400">
+  <p className="mt-3 flex-1 text-sm text-gray-400">
     Automatically generate a ready-to-use SRBMiner configuration using
     your Pearl wallet address and worker name. No manual editing required.
   </p>
 
   <button
-  onClick={() =>
-    document
-      .getElementById("config-generator")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-  }
-  className="mt-6 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
+  onClick={() => setTab("hiveos")}
+  
+  className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
 >
-  Generate Config
+  🐝 Open HiveOS Guide
 </button>
 
-  <p className="mt-3 text-xs text-gray-500">
-    Coming Soon
+  <p className="mt-3 text-xs font-medium text-emerald-400">
+  ✅ Ready to Use
+
   </p>
 </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+        <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
+  
+  
+  <div className="mb-3 self-start inline-flex rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-400">
+  Step 4
+</div>
+  
   <div className="mb-4 text-4xl">⛏️</div>
 
   <h3 className="text-xl font-semibold">
-    Start Mining
-  </h3>
+  Launch Your Miner
+</h3>
 
-  <p className="mt-3 text-sm text-gray-400">
-    Launch SRBMiner using your generated configuration. Your worker and live
-    hashrate will automatically appear on the PRL Forge dashboard after the
-    first accepted share.
+  <p className="mt-3 flex-1 text-sm text-gray-400">
+    Launch SRBMiner using your generated configuration. Once your first share is accepted, your miner, worker and live hashrate will automatically appear on the PRL Forge dashboard.
   </p>
 
   <button
-  onClick={() =>
-    document
-      .getElementById("pool-connection")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-  }
-  className="mt-6 inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-500"
+ onClick={() => setTab("config")}
+
+  className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
 >
-  Connect to PRL Forge
+  ⚙️ Open Config Generator
 </button>
 
   <p className="mt-3 text-xs text-gray-500">
@@ -148,33 +156,106 @@ export default function HowToMine() {
   </p>
 </div>
       </div>
-      <div className="mt-12 rounded-2xl border border-indigo-500/20 bg-gradient-to-r from-indigo-950/40 to-slate-900/40 p-8">
-  <h3 className="text-2xl font-bold">
-    PRL Forge Pool Connection
-  </h3>
-<div
-  id="pool-connection"
-  className="mt-12 rounded-2xl border border-indigo-500/20 bg-gradient-to-r from-indigo-950/40 to-slate-900/40 p-8"
-></div>
-  <p className="mt-3 text-gray-400">
-    Use the following stratum endpoint to connect your miner to the PRL Forge SOLO pool.
-  </p>
 
-  <div className="mt-6 rounded-xl border border-white/10 bg-black/40 p-4">
-    <code className="text-lg text-emerald-400">
-      stratum+tcp://pool.prlforge.com:3333
-    </code>
-  </div>
+     <div className="mt-8 flex justify-center">
+  <div className="inline-flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-md">
 
-  <button onClick={copyPoolAddress}>
-  {copied ? "✅ Copied!" : "📋 Copy Pool Address"}
+  <button
+    onClick={() => setTab("hiveos")}
+    className={`relative rounded-xl px-6 py-3 font-semibold transition-all duration-300 ease-out ${
+  tab === "hiveos"
+    ? "bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xl shadow-indigo-600/40 scale-105"
+    : "text-gray-300 hover:bg-white/10 hover:text-white text-gray-300 hover:border-indigo-400 hover:bg-white/10"
+}`}
+      
+  >
+    🐝 HiveOS
+
+    {tab === "hiveos" && (
+  <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-white" />
+)}
+  </button>
+
+  <button
+    
+     onClick={() => setTab("windows")}
+    className={`relative overflow-hidden rounded-xl border px-6 py-3 font-medium transition-all duration-300 ${
+  tab === "windows"
+    ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
+    : "border-white/10 bg-white/5 text-gray-300 hover:border-indigo-400 hover:bg-white/10"
+}`}
+      
+  >
+    🪟 Windows
+
+    {tab === "windows" && (
+  <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-white" />
+)}
+  </button>
+
+  <button
+    
+     onClick={() => setTab("verify")}
+    className={`relative overflow-hidden rounded-xl border px-6 py-3 font-medium transition-all duration-300 ${
+  tab === "verify"
+    ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
+    : "border-white/10 bg-white/5 text-gray-300 hover:border-indigo-400 hover:bg-white/10"
+}`}
+      
+  >
+    ✅ Verify
+
+    {tab === "verify" && (
+  <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-white" />
+)}
+  </button>
+
+<button
+  onClick={() => setTab("config")}
+  className={`relative overflow-hidden rounded-xl border px-6 py-3 font-medium transition-all duration-300 ${
+    tab === "config"
+      ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
+      : "border-white/10 bg-white/5 text-gray-300 hover:border-indigo-400 hover:bg-white/10"
+  }`}
+>
+  ⚙️ Config
+
+  {tab === "config" && (
+  <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-white" />
+)}
 </button>
 
-  <p className="mt-3 text-sm text-gray-500">
-    Recommended port for SOLO mining.
-  </p>
+  <button
+     onClick={() => setTab("faq")}
+    className={`relative overflow-hidden rounded-xl border px-6 py-3 font-medium transition-all duration-300 ${
+  tab === "faq"
+    ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
+    : "border-white/10 bg-white/5 text-gray-300 hover:border-indigo-400 hover:bg-white/10"
+}`}
+      
+  >
+    ❓ FAQ
+
+    {tab === "faq" && (
+  <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-white" />
+)}
+  </button>
+
 </div>
-<ConfigGenerator />
+
+ </div>
+
+<div className="mt-8 animate-fade-in">
+  {tab === "hiveos" && <HiveOSGuide />}
+
+  {tab === "windows" && <WindowsGuide />}
+
+  {tab === "config" && <ConfigGenerator />}
+
+  {tab === "verify" && <VerifyMining />}
+
+  {tab === "faq" && <FAQ />}
+</div>
     </section>
   );
 }
