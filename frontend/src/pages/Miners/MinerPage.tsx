@@ -2,6 +2,8 @@ import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useWorkers } from "../../hooks/useWorkers";
 import { useMiner } from "../../hooks/useMiner";
+import PoolHashrateChart from "../../components/dashboard/PoolHashrateChart";
+
 
 function timeAgo(dateString?: string) {
   if (!dateString) return "-";
@@ -174,6 +176,15 @@ export default function MinerPage() {
   </div>
 
 </div>
+
+<section className="mb-8">
+  <PoolHashrateChart
+    title="Miner Hashrate History"
+    endpoint={`/api/v1/history/miner?wallet=${encodeURIComponent(
+      wallet || ""
+    )}`}
+  />
+</section>
 
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
 
