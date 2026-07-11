@@ -3,21 +3,23 @@ import BlockTable from "../../components/explorer/BlockTable";
 
 export default function ExplorerPage() {
   return (
-    <main className="min-h-screen bg-[#050816] pt-24">
+    <main className="min-h-screen bg-[#050816] pt-20">
 
       <section className="mx-auto max-w-7xl px-6">
 
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-3xl font-bold">
           Explorer
         </h1>
 
-        <p className="mt-3 mb-10 text-gray-400">
+        <p className="mt-2 mb-6 text-sm text-gray-400">
           Search blocks, transactions and wallet addresses.
         </p>
 
         <SearchBar />
 
-        <BlockTable />
+        <div className="mt-5">
+          <BlockTable />
+        </div>
 
       </section>
 

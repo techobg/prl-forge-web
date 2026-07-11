@@ -16,19 +16,19 @@ export default function StatCard({
   positive = true,
 }: StatCardProps) {
   return (
-    <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500 hover:shadow-[0_0_40px_rgba(99,102,241,.25)]">
+    <div className="group rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500 hover:shadow-[0_0_30px_rgba(99,102,241,.20)]">
 
       <div className="flex items-center justify-between">
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
 
           {icon && (
-  <div className="rounded-xl bg-indigo-500/15 p-3 text-indigo-400 transition group-hover:scale-110">
-    {icon}
-  </div>
-)}
+            <div className="rounded-lg bg-indigo-500/15 p-2.5 text-indigo-400 transition group-hover:scale-105">
+              {icon}
+            </div>
+          )}
 
-          <p className="text-sm uppercase tracking-wider text-gray-400">
+          <p className="text-xs uppercase tracking-[0.15em] text-gray-400">
             {title}
           </p>
 
@@ -36,7 +36,7 @@ export default function StatCard({
 
         {change && (
           <span
-            className={`text-sm font-semibold ${
+            className={`text-xs font-semibold ${
               positive ? "text-green-400" : "text-red-400"
             }`}
           >
@@ -46,7 +46,7 @@ export default function StatCard({
 
       </div>
 
-      <h2 className="mt-6 text-4xl font-bold">
+      <h2 className="mt-4 text-3xl font-bold">
         {value}
       </h2>
 

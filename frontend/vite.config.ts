@@ -7,4 +7,14 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://prlforge.com",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 });

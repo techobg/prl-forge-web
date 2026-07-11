@@ -21,15 +21,15 @@ export default function HowToMine() {
       id="how-to-mine"
       className="mx-auto max-w-7xl px-6 py-14"
     >
-      <div className="mb-8 text-center">
-        <h2 className="text-4xl font-bold">
-          How to Mine Pearl
-        </h2>
+      <div className="mb-10 text-center">
+  <h2 className="text-3xl font-bold text-white">
+    Getting Started
+  </h2>
 
-        <p className="mt-4 flex-1 text-gray-400">
-          Start mining with PRL Forge in just a few simple steps.
-        </p>
-      </div>
+  <p className="mt-3 text-gray-400">
+    Complete your mining setup in four simple steps.
+  </p>
+</div>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
@@ -104,26 +104,35 @@ export default function HowToMine() {
   <div className="mb-4 text-4xl">⚙️</div>
 
   <h3 className="text-xl font-semibold">
-  Generate Miner Config
+  Setup Your Miner
 </h3>
 
-  <p className="mt-3 flex-1 text-sm text-gray-400">
-    Automatically generate a ready-to-use SRBMiner configuration using
-    your Pearl wallet address and worker name. No manual editing required.
-  </p>
+<p className="mt-3 flex-1 text-sm text-gray-400">
+  Choose your preferred platform and follow the setup guide for HiveOS or
+  Windows before generating your mining configuration.
+</p>
 
-  <button
-  onClick={() => setTab("hiveos")}
-  
+<button
+  onClick={() => {
+  setTab("hiveos");
+
+  setTimeout(() => {
+    document
+      .getElementById("guide-section")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }, 50);
+}}
   className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
 >
-  🐝 Open HiveOS Guide
+  📖 Open Setup Guide
 </button>
 
-  <p className="mt-3 text-xs font-medium text-emerald-400">
-  ✅ Ready to Use
-
-  </p>
+<p className="mt-3 text-xs text-gray-500">
+  HiveOS • Windows
+</p>
 </div>
 
         <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-indigo-500">
@@ -135,25 +144,26 @@ export default function HowToMine() {
   
   <div className="mb-4 text-4xl">⛏️</div>
 
-  <h3 className="text-xl font-semibold">
-  Launch Your Miner
+ <h3 className="text-xl font-semibold">
+  Generate Mining Config
 </h3>
 
-  <p className="mt-3 flex-1 text-sm text-gray-400">
-    Launch SRBMiner using your generated configuration. Once your first share is accepted, your miner, worker and live hashrate will automatically appear on the PRL Forge dashboard.
-  </p>
+<p className="mt-3 flex-1 text-sm text-gray-400">
+  Generate a ready-to-use SRBMiner configuration using your Pearl wallet
+  address and worker name. Copy the generated config, launch your miner
+  and start mining in seconds.
+</p>
 
-  <button
- onClick={() => setTab("config")}
-
-  className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
+<button
+  onClick={() => setTab("config")}
+ className="mt-6 inline-flex w-full justify-center items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-violet-500"
 >
   ⚙️ Open Config Generator
 </button>
 
-  <p className="mt-3 text-xs text-gray-500">
-    SOLO Mining • Instant Dashboard
-  </p>
+<p className="mt-3 text-xs font-medium text-emerald-400">
+  ✓ No Manual Editing Required
+</p>
 </div>
       </div>
 
@@ -245,7 +255,10 @@ export default function HowToMine() {
 
  </div>
 
-<div className="mt-8 animate-fade-in">
+<div
+  id="guide-section"
+  className="mt-8 animate-fade-in scroll-mt-32"
+>
   {tab === "hiveos" && <HiveOSGuide />}
 
   {tab === "windows" && <WindowsGuide />}

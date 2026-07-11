@@ -4,29 +4,30 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute left-1/2 top-32 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" />
+      <div className="absolute left-1/2 top-12 h-56 w-56 -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" />
 
-      <div className="relative mx-auto flex min-h-[50vh] max-w-7xl items-center justify-between gap-12 px-6 py-10">
+      <div className="relative mx-auto flex min-h-[24vh] max-w-7xl items-center justify-between gap-6 px-6 py-0">
         {/* Left */}
-        <div className="max-w-3xl">
-          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-300">
+        <div className="max-w-xl">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
             Pearl Mining Pool
           </span>
 
-          <h1 className="mt-8 text-5xl font-black sm:text-6xl lg:text-7xl">
-            <span className="text-white">PRL</span>{" "}
-            <span className="text-indigo-400">FORGE</span>
+          <h1 className="mt-2 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+            Mine Pearl with
+            <br />
+            <span className="text-white">confidence.</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-400">
-            Real-time statistics for the Pearl blockchain and PRL Forge mining
-            pool.
+          <p className="mt-2 max-w-lg text-base leading-7 text-gray-400">
+            Real-time statistics for the Pearl blockchain and the PRL Forge
+            mining pool.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-4">
             <Link
               to="/start-mining"
-              className="inline-flex rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-indigo-500"
+              className="inline-flex rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-500"
             >
               Start Mining
             </Link>
@@ -35,15 +36,11 @@ export default function Hero() {
 
         {/* Right */}
         <div className="hidden flex-1 justify-center lg:flex">
-          <div className="flex h-64 w-64 items-center justify-center rounded-full border border-indigo-500/20 bg-gradient-to-br from-indigo-500/20 to-cyan-500/10 backdrop-blur-xl">
-            <div className="text-center">
-              <div className="text-7xl">💎</div>
-
-              <p className="mt-6 text-2xl font-semibold text-gray-300">
-                Pearl
-              </p>
-            </div>
-          </div>
+          <img
+            src="/logo.png"
+            alt="PRL Forge"
+            className="w-[290px] h-auto drop-shadow-xl"
+          />
         </div>
       </div>
     </section>

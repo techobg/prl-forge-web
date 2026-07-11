@@ -43,11 +43,15 @@ export default function MainLayout() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <NavLink
-            to="/"
-            className="text-3xl font-black text-indigo-400 transition duration-300 hover:scale-105 hover:text-indigo-300"
-          >
-            PRL Forge
-          </NavLink>
+  to="/"
+  className="flex items-center"
+>
+  <img
+    src="/logo.png"
+    alt="PRL Forge"
+    className="h-10 w-auto"
+  />
+</NavLink>
 
           <nav className="hidden items-center gap-6 md:flex">
             {links.map((link) => (
