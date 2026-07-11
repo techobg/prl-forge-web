@@ -7,7 +7,7 @@ export interface HistoryPoint {
 
 async function fetchWorkerHistory(wallet: string, worker: string) {
   const res = await fetch(
-    `http://localhost:8080/api/v1/history/worker?wallet=${wallet}&worker=${worker}`
+    `http:///api/v1/history/worker?wallet=${wallet}&worker=${worker}`
   );
 
   if (!res.ok) {

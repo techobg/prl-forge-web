@@ -7,8 +7,8 @@ export function useMiner(wallet?: string) {
     enabled: !!wallet,
     queryFn: async () => {
       const { data } = await axios.get(
-        `http://localhost:8081/api/miner?wallet=${encodeURIComponent(wallet!)}`
-      );
+  `/api/v1/miner?wallet=${encodeURIComponent(wallet!)}`
+);
 
       return data;
     },

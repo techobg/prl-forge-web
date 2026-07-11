@@ -6,7 +6,7 @@ export interface PoolHistoryPoint {
 }
 
 async function fetchPoolHistory(): Promise<PoolHistoryPoint[]> {
-  const res = await fetch("http://localhost:8080/api/v1/history/pool");
+  const res = await fetch("/api/v1/history/pool");
 
   if (!res.ok) {
     throw new Error("Failed to load pool history");

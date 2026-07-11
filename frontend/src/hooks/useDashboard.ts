@@ -34,7 +34,7 @@ round: {
 }
 
 async function fetchDashboard(): Promise<DashboardResponse> {
-  const res = await fetch("http://localhost:8080/api/v1/dashboard");
+  const res = await fetch("/api/v1/dashboard");
 
   if (!res.ok) {
     throw new Error("Failed to load dashboard");
